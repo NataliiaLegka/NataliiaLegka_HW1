@@ -10,11 +10,39 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.Write ("Введите длину стороны квадрата -> ");
-            string sidetext = Console.ReadLine();
-            double squareside = Convert.ToDouble(sidetext);
-            double square1 = squareside * squareside;
-            Console.WriteLine ("Площадь квадрата равна " + Math.Round(square1, 2));
+            bool square1Calculated = false;
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("Введите длину стороны квадрата -> ");
+                string sidetext = Console.ReadLine();
+                double squareside = Convert.ToDouble(sidetext);
+
+                if (squareside > 0)
+                {
+                    double square1 = squareside * squareside;
+                    Console.WriteLine("Площадь квадрата равна " + Math.Round(square1, 2));
+                    square1Calculated = true;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Число должно быть больше нуля");
+                }
+
+            }
+            if (!square1Calculated) 
+            {
+                Console.WriteLine("Вы исчерпали количество попыток");
+                Random rnd = new Random();
+                double randomSide = rnd.NextDouble()*4.5+0.5;
+                
+                Console.WriteLine("Поэтому будет посчитан случайный квадрат со стороной " + randomSide);
+                double square1 = randomSide * randomSide;
+                Console.WriteLine("Площадь случайного квадрата равна " + Math.Round(square1, 2));
+            }
+            
+                
+
 
 
             Console.Write("Введите длину радиуса круга -> ");
